@@ -8,27 +8,27 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tbddlab7.R;
-import com.example.tbddlab7.model.Contact;
+import com.example.tbddlab7.model.User;
 
 import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class ContactAdapter extends BaseAdapter {
+public class UserAdapter extends BaseAdapter {
     private Context context;
     private int idLayout;
-    private List<Contact> contacts;
+    private List<User> users;
 
-    public ContactAdapter(Context context, int idLayout, List<Contact> contacts) {
+    public UserAdapter(Context context, int idLayout, List<User> users) {
         this.context = context;
         this.idLayout = idLayout;
-        this.contacts = contacts;
+        this.users = users;
     }
 
     @Override
     public int getCount() {
-        if (contacts.size() != 0) {
-            return contacts.size();
+        if (users.size() != 0) {
+            return users.size();
         }
         return 0;
     }
@@ -50,8 +50,8 @@ public class ContactAdapter extends BaseAdapter {
         }
 
         TextView name = (TextView) view.findViewById(R.id.textView);
-        Contact contact = contacts.get(position);
-        name.setText(contact.getName());
+        User user = users.get(position);
+        name.setText(user.getName());
         return view;
     }
 }

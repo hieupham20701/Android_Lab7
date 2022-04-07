@@ -1,18 +1,18 @@
 package com.example.tbddlab7.model;
 
-public class Contact {
+public class User {
     int id;
     String name;
 
-    public Contact() {
+    public User() {
     }
 
-    public Contact(int id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Contact(String name) {
+    public User(String name) {
         this.name = name;
     }
 

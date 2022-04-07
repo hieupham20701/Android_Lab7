@@ -9,15 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.tbddlab7.adapter.ContactAdapter;
+import com.example.tbddlab7.adapter.UserAdapter;
 import com.example.tbddlab7.db.DatabaseHandler;
-import com.example.tbddlab7.model.Contact;
+import com.example.tbddlab7.model.User;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private List<Contact> contacts;
+    private List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +38,22 @@ public class MainActivity extends AppCompatActivity {
 //        db.addContact(new Contact("Tin"));
 //
 //        Log.d("Reading: ", "Reading all contacts ...");
-        this.contacts = db.getContacts();
+        this.users = db.getContacts();
         this.listView = (ListView) findViewById(R.id.listView);
 
-        for(Contact contact: contacts) {
+        for(User contact: users) {
             String log = "Id: " + contact.getId() + " ,Name: " + contact.getName();
             Log.d("Name", log);
         }
 
-        ContactAdapter contactAdapter = new ContactAdapter(this, R.layout.listview_layout, contacts);
-        listView.setAdapter(contactAdapter);
+        UserAdapter userAdapter = new UserAdapter(this, R.layout.listview_layout, users);
+        listView.setAdapter(userAdapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.addContact(new Contact(txtName.getText().toString()));
-                contacts = db.getContacts();
+                db.addContact(new User(txtName.getText().toString()));
+                users = db.getContacts();
                 dataChange();
             }
         });
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dataChange() {
-        ContactAdapter contactAdapter = new ContactAdapter(this, R.layout.listview_layout, contacts);
-        listView.setAdapter(contactAdapter);
+        UserAdapter userAdapter = new UserAdapter(this, R.layout.listview_layout, users);
+        listView.setAdapter(userAdapter);
     }
 }
